@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -11,6 +13,7 @@ public class Main {
         //OrderControl.runParkUnPark();
         //RepeatPrint.runRepeatPrintWaitNofity();
         //RepeatPrint.runRepeatPrintReentrannt();
-        RepeatPrint.runRepeatPrintPark();
+        //RepeatPrint.runRepeatPrintPark();
+        MessageQueue.runMessageQueueExample();
     }
 }
