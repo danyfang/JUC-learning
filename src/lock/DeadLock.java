@@ -1,3 +1,5 @@
+package lock;
+
 public class DeadLock {
 
     public static void runExample() {

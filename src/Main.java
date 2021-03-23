@@ -1,19 +1,25 @@
-import java.util.LinkedList;
+import atomic.Atomic;
 
 public class Main {
 
+    volatile static int x = 0;
+    static Object m = new Object();
     public static void main(String[] args) {
-        //GuardedObject.GuardedObjectExample.runExample();
-        //GuardedObject.MailBoxes.runExample();
-        //DeadLock.runExample();
-        //PhilosopherDinning.runExample();
-        //ReentranntLockCondition.runExample();
+        //lock.GuardedObject.GuardedObjectExample.runExample();
+        //lock.GuardedObject.MailBoxes.runExample();
+        //lock.DeadLock.runExample();
+        //lock.PhilosopherDinning.runExample();
+        //lock.ReentranntLockCondition.runExample();
         //OderControl.runWaitNotify();
         //OderControl.runReentranntLock();
-        //OrderControl.runParkUnPark();
-        //RepeatPrint.runRepeatPrintWaitNofity();
-        //RepeatPrint.runRepeatPrintReentrannt();
-        //RepeatPrint.runRepeatPrintPark();
-        MessageQueue.runMessageQueueExample();
+        //lock.OrderControl.runParkUnPark();
+        //lock.RepeatPrint.runRepeatPrintWaitNofity();
+        //lock.RepeatPrint.runRepeatPrintReentrannt();
+        //lock.RepeatPrint.runRepeatPrintPark();
+        //MessageQueue.runMessageQueueExample();
+
+        //Atomic.atomicIntegerExample();
+        //Atomic.atomicUpdaterExample();
+        Atomic.atomicArrayExample();
     }
 }

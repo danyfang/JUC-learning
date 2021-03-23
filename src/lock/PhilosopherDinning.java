@@ -1,3 +1,5 @@
+package lock;
+
 import java.util.concurrent.locks.ReentrantLock;
 
 public class PhilosopherDinning {
@@ -144,7 +146,7 @@ class ChopStick {
 
     @Override
     public String toString() {
-        return "ChopStick{" +
+        return "lock.ChopStick{" +
                 "name='" + name + '\'' +
                 '}';
     }
