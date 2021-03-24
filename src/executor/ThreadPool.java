@@ -1,7 +1,12 @@
 package executor;
 
+import util.Sleeper;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
-import java.util.concurrent.TimeUnit;
+import java.util.List;
+import java.util.concurrent.*;
 
 public class ThreadPool {
 
@@ -89,6 +94,107 @@ public class ThreadPool {
         }
     }
 
+
+    public static void runFixedThreadPoolExample() {
+        ExecutorService pool = Executors.newFixedThreadPool(2);
+        pool.execute(() -> {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Execution finished " + Thread.currentThread());
+        });
+        pool.execute(() -> {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Execution finished " + Thread.currentThread());
+        });
+        pool.execute(() -> {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Execution finished " + Thread.currentThread());
+        });
+        pool.shutdown();
+    }
+
+    public static void runCachedThreadPoolExample() {
+        ExecutorService pool = Executors.newCachedThreadPool();
+
+        SynchronousQueue<Integer> queue = new SynchronousQueue<>();
+
+        new Thread(() -> {
+            try {
+                System.out.println("Putting 1");
+                queue.put(1);
+                System.out.println("Putting 2");
+                queue.put(2);
+                System.out.println("Putting 3");
+                queue.put(3);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
+        Sleeper.sleep(1);
+        new Thread(() -> {
+            try{
+                System.out.println("Taking " + queue.take());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
+        Sleeper.sleep(2);
+        new Thread(() -> {
+            try{
+                System.out.println("Taking " + queue.take());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
+        Sleeper.sleep(3);
+        new Thread(() -> {
+            try{
+                System.out.println("Taking " + queue.take());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+
+    public static void runThreadPoolFutureExample() throws InterruptedException, ExecutionException {
+        ExecutorService pool = Executors.newFixedThreadPool(3);
+
+        List<Future<String>> futures = pool.invokeAll(Arrays.asList(
+                () -> {
+                    Thread.sleep(1000);
+                    return "1";
+                },
+                () -> {
+                    Thread.sleep(500);
+                    return "2";
+                },
+                () -> {
+                    Thread.sleep(1000);
+                    return "3";
+                }
+        ));
+        for (Future<String> future : futures) {
+            System.out.println(future.get());
+        }
+
+
+        pool.shutdown();
+    }
 
 
 

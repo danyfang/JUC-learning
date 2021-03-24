@@ -25,6 +25,20 @@ public class Main {
         //Atomic.atomicArrayExample();
 
         //Pool.runPoolExample();
-        ThreadPool.runThreadPoolExample();
+        //ThreadPool.runThreadPoolExample();
+
+        Thread t1 = new Thread(() -> {
+            System.out.println(Thread.currentThread());
+        });
+
+        t1.run();
+
+        //ThreadPool.runFixedThreadPoolExample();
+        //ThreadPool.runCachedThreadPoolExample();
+        try {
+            ThreadPool.runThreadPoolFutureExample();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

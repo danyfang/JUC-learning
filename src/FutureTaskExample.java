@@ -3,7 +3,7 @@ import java.util.concurrent.FutureTask;
 public class FutureTaskExample {
 
     public static void run() throws Exception{
-        FutureTask task = new FutureTask(() -> {
+        FutureTask<Integer> task = new FutureTask<Integer>(() -> {
             Thread.sleep(100);
             return 10;
         });
