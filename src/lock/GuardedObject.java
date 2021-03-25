@@ -58,8 +58,15 @@ public class GuardedObject {
             new Thread(() -> {
                 System.out.println("Start waiting for results");
                 Object response = guardedObject.get(10000);
-                System.out.println("Got the results " + response.toString());
+                System.out.println(Thread.currentThread().getName() + " Got the results " + response.toString());
             }, "Thread 1").start();
+
+            new Thread(() -> {
+                System.out.println("Start waiting for results");
+                Object response = guardedObject.get(10000);
+                System.out.println(Thread.currentThread().getName() + " Got the results " + response.toString());
+            }, "Thread 3").start();
+
             new Thread(() -> {
                 System.out.println("Start downloading...");
                 //Simulate time consuming task

@@ -1,4 +1,5 @@
 import atomic.Atomic;
+import container.CopyOnWriteArrayListExample;
 import executor.ThreadPool;
 import immutable.Pool;
 
@@ -6,7 +7,7 @@ public class Main {
 
     volatile static int x = 0;
     static Object m = new Object();
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         //lock.GuardedObject.GuardedObjectExample.runExample();
         //lock.GuardedObject.MailBoxes.runExample();
         //lock.DeadLock.runExample();
@@ -27,18 +28,24 @@ public class Main {
         //Pool.runPoolExample();
         //ThreadPool.runThreadPoolExample();
 
-        Thread t1 = new Thread(() -> {
-            System.out.println(Thread.currentThread());
-        });
-
-        t1.run();
-
         //ThreadPool.runFixedThreadPoolExample();
         //ThreadPool.runCachedThreadPoolExample();
-        try {
-            ThreadPool.runThreadPoolFutureExample();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        //ThreadPool.runThreadPoolFutureExample();
+
+        //CPULoadExample();
+
+        CopyOnWriteArrayListExample.runExample();
+    }
+
+    public static void CPULoadExample() {
+        new Thread(() -> {
+            while(true){
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }
