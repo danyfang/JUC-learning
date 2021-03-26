@@ -1,6 +1,7 @@
 import atomic.Atomic;
 import container.CopyOnWriteArrayListExample;
 import executor.ThreadPool;
+import flyweight.FlyWeightPattern;
 import immutable.Pool;
 
 public class Main {
@@ -33,12 +34,18 @@ public class Main {
         //ThreadPool.runThreadPoolFutureExample();
 
         //CPULoadExample();
+        /*
         Object object = new Object();
         new Thread(() -> {
             synchronized (object) {
                 System.out.println(object.hashCode());
             }
         }).start();
+         */
+
+        //FlyWeightPattern.runExample();
+
+        ThreadSafeClassExample.demo();
 
         //CopyOnWriteArrayListExample.runExample();
     }
