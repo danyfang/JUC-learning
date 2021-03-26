@@ -35,6 +35,9 @@ public class MessageQueue {
      * this 对象里只有一个 queue 的引用，这个锁住了有什么用？
      * 如果共享的变量是 this 的一个成员变量，比如说 int 类型的，
      * 那么可以锁住 this
+     *
+     * 很简单：做一下逃逸分析，因为 take 和 put 方法都是完全可以
+     * 被不同的线程所调用的，也就是逃出了创建它的线程栈
      * */
     public void put(Message message) {
         synchronized (queue) {// think about why this should be queue instead of this

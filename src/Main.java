@@ -33,8 +33,14 @@ public class Main {
         //ThreadPool.runThreadPoolFutureExample();
 
         //CPULoadExample();
+        Object object = new Object();
+        new Thread(() -> {
+            synchronized (object) {
+                System.out.println(object.hashCode());
+            }
+        }).start();
 
-        CopyOnWriteArrayListExample.runExample();
+        //CopyOnWriteArrayListExample.runExample();
     }
 
     public static void CPULoadExample() {
