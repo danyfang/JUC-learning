@@ -3,6 +3,7 @@ import container.CopyOnWriteArrayListExample;
 import executor.ThreadPool;
 import flyweight.FlyWeightPattern;
 import immutable.Pool;
+import task.FutureTaskExample;
 
 public class Main {
 
@@ -45,9 +46,10 @@ public class Main {
 
         //FlyWeightPattern.runExample();
 
-        ThreadSafeClassExample.demo();
+        //ThreadSafeClassExample.demo();
 
         //CopyOnWriteArrayListExample.runExample();
+        FutureTaskExample.runExample();
     }
 
     public static void CPULoadExample() {
