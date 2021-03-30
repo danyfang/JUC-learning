@@ -1,6 +1,7 @@
 import atomic.Atomic;
 import container.CopyOnWriteArrayListExample;
 import executor.ThreadPool;
+import executor.ThreadStarvation;
 import flyweight.FlyWeightPattern;
 import immutable.Pool;
 import task.FutureTaskExample;
@@ -49,7 +50,8 @@ public class Main {
         //ThreadSafeClassExample.demo();
 
         //CopyOnWriteArrayListExample.runExample();
-        FutureTaskExample.runExample();
+        //FutureTaskExample.runExample();
+        ThreadStarvation.runExample();
     }
 
     public static void CPULoadExample() {
